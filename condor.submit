@@ -36,14 +36,18 @@ error = $(Process)_err.txt
 notification = Never
 initialdir = /nfs/dust/cms/user/frengelk/Code/cmssw/CMSSW_11_0_2/src/HcalTrigger/Validation/scripts
 getenv = True
-request_memory = 40000
+request_memory = 5000
 ##request_disk   = 16383
 request_runtime = 36000
 
 queue arguments from(
-	#--dir crab_hcal_testLLP-350_CT10000_with_reco_def
-	#--dir crab_hcal_testLLP-125_CT900_with_reco_def
-	#--dir crab_hcal_testLLP-Nu_Pt20_with_reco_def
+	#--dir crab_hcal_testLLP-Nu_Pt20_with_new_reco_real_new_cond_reduced
+	#--dir crab_hcal_testLLP-125_CT900_with_old_reco_real_new_cond
+	#--dir crab_hcal_testLLP-350_CT10000_with_new_reco_real_new_cond
 	#--dir crab_hcal_testLLP-QCD_Pt3000_with_reco_def
-	--dir crab_hcal_testLLP-QCD_Pt3000_reduced
+	#--dir crab_hcal_testLLP-Nu_Pt20_with_new_reco_real_def_reduced
+	#--dir crab_hcal_testLLP-125_CT900_with_new_reco_real_def_def
+	#--dir crab_hcal_testLLP-350_CT10000_with_new_reco_real_def_def
+	#--dir crab_hcal_test_LLP-testMuons_MH125_CT900_def
+	--dir Lucas_L1Ntuple_112-muon_reco.root
 )

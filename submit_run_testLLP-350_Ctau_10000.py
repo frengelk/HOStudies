@@ -1,13 +1,17 @@
-RUN = "testLLP-350_CT10000_with_complete_reco"
-# RUN = "testLLP-125_CT900_with_reco"
-# RUN = "testLLP-Nu_Pt20_with_reco"
-# RUN = "testLLP-QCD_Pt3000_with_reco"
-NEWCONDITIONS = False
+#RUN = "testLLP-350_CT10000_with_new_reco_real_RawEmul"
+#RUN = "testLLP-125_CT900_with_new_reco_real_def"
+#RUN = "testLLP-Nu_Pt20_with_new_reco_real_def"
+#RUN = "testLLP-QCD_Pt3000_with__new_reco_real"
+RUN = "testMuons_MH125_CT900"
+
+NEWCONDITIONS = True
 OUTPUTSITE = "T2_DE_DESY"
-# DATASET = '/HTo2LongLivedTo4b_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV_pythia8/Run3Winter20DRPremixMiniAOD-110X_mcRun3_2021_realistic_v6-v2/GEN-SIM-RAW'
-DATASET = "/HTo2LongLivedTo4b_MH-350_MFF-160_CTau-10000mm_TuneCP5_14TeV_pythia8/Run3Winter20DRPremixMiniAOD-110X_mcRun3_2021_realistic_v6-v2/GEN-SIM-RAW"
-# DATASET = "/Neutrino_Pt-2to20_gun/Run3Winter20DRPremixMiniAOD-SNB_110X_mcRun3_2021_realistic_v6-v1/GEN-SIM-RAW"
-# DATASET = "/QCD_Pt-15to3000_TuneCP5_Flat_14TeV_pythia8_HCAL/Run3Winter20DRPremixMiniAOD-packHBTDC_110X_mcRun3_2021_realistic_v6-v1/GEN-SIM-DIGI-RAW"
+#DATASET = '/HTo2LongLivedTo4b_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV_pythia8/Run3Winter20DRPremixMiniAOD-110X_mcRun3_2021_realistic_v6-v2/GEN-SIM-RAW'
+#DATASET = "/HTo2LongLivedTo4b_MH-350_MFF-160_CTau-10000mm_TuneCP5_14TeV_pythia8/Run3Winter20DRPremixMiniAOD-110X_mcRun3_2021_realistic_v6-v2/GEN-SIM-RAW"
+#DATASET = "/Neutrino_Pt-2to20_gun/Run3Winter20DRPremixMiniAOD-SNB_110X_mcRun3_2021_realistic_v6-v1/GEN-SIM-RAW"
+#DATASET = "/QCD_Pt-15to3000_TuneCP5_Flat_14TeV_pythia8_HCAL/Run3Winter20DRPremixMiniAOD-packHBTDC_110X_mcRun3_2021_realistic_v6-v1/GEN-SIM-DIGI-RAW"
+DATASET = "/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV_pythia8/Run3Winter20DRPremixMiniAOD-110X_mcRun3_2021_realistic_v6-v2/GEN-SIM-RAW"
+
 
 # template for crab submission.
 # submit_jobs.py will insert definitions above
@@ -27,7 +31,7 @@ config.General.transferOutputs = True
 
 # Name of the CMSSW configuration file
 # config.JobType.psetName = 'ntuple_maker_' + conditionType + '.py'
-config.JobType.psetName = "ntuple_maker_350_def.py"
+config.JobType.psetName = "ntuple_maker.py" #"ntuple_maker_350_def.py"
 config.JobType.allowUndistributedCMSSW = True
 
 config.JobType.pluginName = "Analysis"
