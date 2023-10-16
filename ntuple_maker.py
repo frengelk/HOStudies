@@ -101,6 +101,8 @@ from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleAODRAWEMU
 from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleRAW
 from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleGEN
 from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleEMU
+from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleAODEMUGEN_MC
+from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleRAWEMUGEN_MC
 
 from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleAODEMU
 from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleAOD_MC
@@ -114,6 +116,7 @@ process = L1NtupleGEN(process)
 #process = L1NtupleAODRAWEMU(process)
 process = L1NtupleEMU(process)
 #process = L1NtupleAODEMU(process)
+#process = L1NtupleAODEMUGEN_MC(process)
 
 # Automatic addition of the customisation function from L1Trigger.Configuration.customiseSettings
 from L1Trigger.Configuration.customiseSettings import L1TSettingsToCaloParams_2018_v1_4_1

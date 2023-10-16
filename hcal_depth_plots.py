@@ -57,7 +57,7 @@ ct900_dir = "crab_hcal_testLLP-MH125_MFF_12_CT900_to4mu_def/results"
 ct10000_dir = "crab_hcal_testLLP-MH350_MFF160_CT10000_with_new_MC_def/results"
 nu_dir = "crab_hcal_testLLP-Nu_Pt20_with_reco_def/results"
 
-ct900_files = search_files(ct900_dir)
+ct900_files = search_files(ct900_dir)[:1]
 ct10000_files = search_files(ct10000_dir)[:1]
 nu_files = search_files(nu_dir)[:1]
 
@@ -250,6 +250,10 @@ ho_eta = a[ho_str]["hcalDetIdIEta"].array()
 ct900_ho_eta = IEtaToCMSEta(merge_arrays(ct900_files, ho_str + "hcalDetIdIEta"))
 ct900_ho_phi = IPhiToCMSPhi(merge_arrays(ct900_files, ho_str + "hcalDetIdIPhi"))
 
+# reverse
+#ct900_ho_eta = ct900_ho_eta[:, ::-1]
+#ct900_ho_phi = ct900_ho_phi[:, ::-1]
+
 # ho cut eta < 1.4
 ct900_geneta_parent = ak.where(abs(ct900_geneta_parent) < 1.4, ct900_geneta_parent, -999)
 
@@ -349,7 +353,7 @@ plt.legend(
 )  # loc='upper center', bbox_to_anchor=(.5,1.15))#, fancybox=True, shadow=True)
 plt.yscale("log")
 plt.savefig(
-    "/nfs/dust/cms/user/frengelk/examples/EPR/hcal_plots/Eta_matching_daughter_comp.png"
+    "/nfs/dust/cms/user/frengelk/examples/EPR/hcal_plots/Eta_matching_daughter_comp_new.png"
 )
 
 # eta comp

@@ -92,16 +92,25 @@ associatePatAlgosToolsTask(process)
 # Automatic addition of the customisation function from L1Trigger.Configuration.customiseReEmul
 from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAWsimHcalTP
 
+# L1TReEmulMCFromRAWSimHcalTP
+
+
 # call to customisation function L1TReEmulFromRAWsimHcalTP imported from L1Trigger.Configuration.customiseReEmul
-# process = L1TReEmulFromRAWsimHcalTP(process)
+process = L1TReEmulFromRAWsimHcalTP(process)
 
 # Automatic addition of the customisation function from L1Trigger.L1TNtuples.customiseL1Ntuple
 from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleAODRAWEMU
+
+# from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleAODRAW
+# from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleRAWEMU
 from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleRAW
 from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleGEN
 
+# from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleEMU
 # from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleRAWEMUGEN_MC
 from L1Trigger.L1TNtuples.customiseL1Ntuple import L1NtupleAOD_MC
+
+# from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAWsimHcalTP
 
 # call to customisation function L1NtupleAODRAWEMU imported from L1Trigger.L1TNtuples.customiseL1Ntuple
 process = L1NtupleRAW(process)
@@ -109,15 +118,15 @@ process = L1NtupleGEN(process)
 # process = L1NtupleRAWEMUGEN_MC(process)
 process = L1NtupleAOD_MC(process)
 process = L1NtupleAODRAWEMU(process)
-
+# process = L1TReEmulFromRAWsimHcalTP(process)
 
 # Automatic addition of the customisation function from L1Trigger.Configuration.customiseSettings
 from L1Trigger.Configuration.customiseSettings import (
     L1TSettingsToCaloStage2Params_2017_v1_8_4,
-    L1TSettingsToCaloParams_2018_v1_3,
+    L1TSettingsToCaloParams_2018_v1_4,
 )
 
-process = L1TSettingsToCaloParams_2018_v1_3(process)
+# process = L1TSettingsToCaloStage2Params_2017_v1_8_4(process)
 
 # End of customisation functions
 

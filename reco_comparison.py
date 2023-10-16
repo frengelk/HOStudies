@@ -60,9 +60,12 @@ if __name__ == "__main__":
     # ]
 
     # hacky way for getting keys
+    """
     fname = files_crabDir[0]
 
     file = up.open(fname)
+    """
+    file = up.open(options.crabDir)
 
     # ev = file["l1EventTree"]["L1EventTree"]["Event"].keys()
     # upg = file["l1UpgradeTree"]["L1UpgradeTree"]["L1Upgrade"].keys()
@@ -71,14 +74,23 @@ if __name__ == "__main__":
     index = [
         ("l1EventTree", "L1EventTree", "Event"),
         ("l1UpgradeTree", "L1UpgradeTree", "L1Upgrade"),
-        ("l1GeneratorTree", "L1GenTree", "Generator"),
+        ("l1UpgradeEmuTree", "L1UpgradeTree", "L1Upgrade"),
+        ("l1UpgradeTfMuonEmuTree", "L1UpgradeTfMuonTree", "L1UpgradeBmtfMuon"),
+        ("l1UpgradeTfMuonEmuTree", "L1UpgradeTfMuonTree", "L1UpgradeOmtfMuon"),
+        ("l1UpgradeTfMuonEmuTree", "L1UpgradeTfMuonTree", "L1UpgradeEmtfMuon"),
+        ("l1UpgradeTfMuonEmuTree", "L1UpgradeTfMuonTree", "L1UpgradeBmtfInputs"),
+        ("l1UpgradeTfMuonEmuTree", "L1UpgradeTfMuonTree", "L1UpgradeKBmtfMuon"),
+        # ("l1GeneratorTree", "L1GenTree", "Generator"),
         ("l1HOTree", "L1HOTree", "L1HO"),
-        ("l1CaloTowerTree", "L1CaloTowerTree", "CaloTP"),
+        ("l1CaloTowerEmuTree", "L1CaloTowerTree", "CaloTP"),
+        ("l1CaloTowerEmuTree", "L1CaloTowerTree", "L1CaloCluster"),
+        ("l1CaloTowerEmuTree", "L1CaloTowerTree", "L1CaloTower"),
     ]
 
+    # from IPython import embed; embed()
     # for files in [files_350, files_125]:
     # arr_350, arr_125, arr_nu, arr_QCD = [], [], [], []
-    arr_crabDir = []
+    arr_crabDict = {}
     key_names = []
 
     # print("Generator Tree")
@@ -126,10 +138,11 @@ if __name__ == "__main__":
         # (arr_QCD, files_QCD),
         # ):
         for k in file[ind[0]][ind[1]][ind[2]].keys():
-            # if k=="nHcalDetIds":
-            #    continue
+            if k == "tfMuonDecodedTrAdd":
+                continue
             print(k)
-            for fname in files_crabDir:
+            for fname in [options.crabDir]:
+                # for fname in files_crabDir:
 
                 # with up.open(fname) as file:
 
@@ -143,6 +156,8 @@ if __name__ == "__main__":
                 # ar = file["l1HOTree"]["L1HOTree"]["L1HO"][k].array()
 
                 # if "L1Ntuple_1" in fname:
+                arr = file[ind[0]][ind[1]][ind[2]][k].array()
+                """
                 if fname == files_crabDir[0]:
                     arr = file[ind[0]][ind[1]][ind[2]][k].array()
                     # ak.zeros_like(ar)
@@ -153,15 +168,18 @@ if __name__ == "__main__":
                         (arr, file[ind[0]][ind[1]][ind[2]][k].array()), axis=0
                     )
                 # ak.sum(arr, file["l1HOTree;1"]["L1HOTree;1"]["L1HO"][k].array())
-            arr_crabDir.append(arr)
+                """
+            comb_key = ind[2] + "/" + k
+            arr_crabDict.update({comb_key: arr})
             del arr
-        key_names.extend(file[ind[0]][ind[1]][ind[2]].keys())
+            # key_names.extend(file[ind[0]][ind[1]][ind[2]].keys())
+            key_names.append(comb_key)
 
-    with open(loc + "key_names_1.pkl", "wb") as f:
-        pickle.dump(key_names, f)
+    # with open(loc + "key_names_HO_real.pkl", "wb") as f:
+    #    pickle.dump(key_names, f)
 
-    with open(loc + crabDir.split("-")[1] + ".pkl", "wb") as f:
-        pickle.dump(arr_crabDir, f)
+    with open(loc + crabDir.split("-")[1] + "dict_real.pkl", "wb") as f:
+        pickle.dump(arr_crabDict, f)
 
     # with open(loc + "arr_125_1.pkl", "wb") as f:
     # pickle.dump(arr_125, f)

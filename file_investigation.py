@@ -3,9 +3,10 @@ import matplotlib
 
 matplotlib.use("Agg")
 
-import ROOT as ROOT
+#import ROOT as ROOT
 import uproot as up
 import matplotlib.pyplot as plt
+import awkward as ak
 
 mass_point = "125"
 
@@ -21,19 +22,24 @@ fname_mu = "crab_projects/crab_SingleMuon/results/L1Ntuple_465.root"
 fname_350 = "crab_hcal_testLLP-350_CT10000_def/results/L1Ntuple_2.root"
 fname_125 = "crab_hcal_testLLP-125_CT900_def/results/L1Ntuple_2.root"
 # "crab_hcal_LLP125_retry_def/results/L1Ntuple_1.root"
+fname_new = "crab_hcal_testLLP-MH350_MFF160_CT10000_with_new_MC_def/results/L1Ntuple_1.root"
+fname_local = "/nfs/dust/cms/user/frengelk/examples/EPR/MH350_MFF160_CT10000_L1Ntuple_1.root"
 
-file = up.open(fname_mass_point)
+file = up.open(fname_new)
+file_local = up.open(fname_local)
 # file_xrd = up.open(fname_xrd)
 # file_mu = up.open(fname_mu)
 # file_test = up.open(fname_test)
-file_350 = up.open(fname_350)
-file_125 = up.open(fname_125)
+#file_350 = up.open(fname_350)
+#file_125 = up.open(fname_125)
 
-muon = file["l1MuonRecoTree"]["Muon2RecoTree"]["Muon"]
+#muon = file["l1MuonRecoTree"]["Muon2RecoTree"]["Muon"]
+#time = file["l1EventTree"]["L1EventTree"]["Event"]["time"].array()
 
-time = file["l1EventTree"]["L1EventTree"]["Event"]["time"].array()
+branch_local = file_local["l1CaloTowerEmuTree"]["L1CaloTowerTree"]["CaloTP"]
+hcalTPdepth7 = branch_local['hcalTPDepth7'].array()
 
-# from IPython import embed;embed()
+from IPython import embed;embed()
 
 print(file_125["l1GeneratorTree;1"]["L1GenTree"]["Generator"].keys())
 for k in file_350["l1GeneratorTree"]["L1GenTree"]["Generator"].keys():
