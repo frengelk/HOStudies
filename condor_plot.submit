@@ -1,0 +1,43 @@
+# #Template for the submit file created by createFileList.py alongside the arguments.md
+# executable = /nfs/dust/cms/user/frengelk/Code/cmssw/CMSSW_11_0_2/src/HcalTrigger/Validation/scripts/reco_comparison.py
+# #arguments  = $(inputFile)
+#
+# universe       = vanilla
+# request_memory = 500 MB
+#
+# output = /nfs/dust/cms/user/frengelk/Code/cmssw/CMSSW_11_0_2/src/HcalTrigger/Validation/scripts/job$(Cluster)_$(Process).stdout
+# error  = /nfs/dust/cms/user/frengelk/Code/cmssw/CMSSW_11_0_2/src/HcalTrigger/Validation/scripts/job$(Cluster)_$(Process).stderr
+# log    = /nfs/dust/cms/user/frengelk/Code/cmssw/CMSSW_11_0_2/src/HcalTrigger/Validation/scripts/job$(Cluster)_$(Process).log
+#
+# queue
+
+
+#!/usr/bin/env bash
+
+# Bootstrap file for batch jobs that is sent with all jobs and
+# automatically called by the law remote job wrapper script to find the
+# setup.sh file of this example which sets up software and some environment
+# variables. The "" variable is defined in the workflow
+# base tasks in tasks/basetasks.py.
+
+#action() {
+#        #source "$HOME/.profile"
+#    source "/nfs/dust/cms/user/frengelk/Code/SusyLeptonAnalysis/analysis/setup.sh"
+#}
+
+
+universe = vanilla
+executable = plot_reco.py
+log = $(Process)_plot_reco_new_log.txt
+output = $(Process)_plot_reco_new_out.txt
+error = $(Process)_plot_reco_new_err.txt
+#should_transfer_files = YES
+#transfer_input_files = /nfs/dust/cms/group/susy-desy/Susy1Lepton/data/jobs/tmp35zpm4j5/bash_wrapper_20To21.sh,/nfs/dust/cms/group/susy-desy/Susy1Lepton/data/jobs/tmp35zpm4j5/job_20To21.sh,/nfs/dust/cms/group/susy-desy/Susy1Lepton/data/jobs/tmp35zpm4j5/htcondor_bootstrap_20To21.sh
+notification = Never
+initialdir = /nfs/dust/cms/user/frengelk/Code/cmssw/CMSSW_11_0_2/src/HcalTrigger/Validation/scripts
+getenv = True
+request_memory = 20000
+##request_disk   = 16383
+request_runtime = 36000
+
+queue
