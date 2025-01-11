@@ -1,3 +1,6 @@
+Should be set up in CMSSW_11_02 
+(e.g. mine is located on the DESY naf at /nfs/dust/cms/user/frengelk/Code/cmssw/CMSSW_11_0_2/src/HcalTrigger/Validation/scripts)
+
 ## Example code for investigating LLPs in the HO
 
 Submitting your file production to CRAB:
